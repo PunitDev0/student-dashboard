@@ -40,7 +40,7 @@ export function ProfilePage() {
     async function loadStudent() {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/students/portal/me?institutionId=${parsed.institutionId}&studentId=${parsed.id}`
+          `${process.env.NEXT_PUBLIC_API_URL}api/students/portal/me?institutionId=${parsed.institutionId}&studentId=${parsed.id}`
         );
 
         console.log("Profile API:", res.data);

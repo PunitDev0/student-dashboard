@@ -42,7 +42,7 @@ export default function TimetablePage() {
       try {
         // Step 1: Get current class & section
         const allocRes = await axios.get(
-          `http://localhost:3000/api/students/portal/me?institutionId=${parsed.institutionId}&studentId=${parsed.id}`
+          `${process.env.NEXT_PUBLIC_API_URL}api/students/portal/me?institutionId=${parsed.institutionId}&studentId=${parsed.id}`
         );
 
         const { currentClass, currentSection } = allocRes.data.data;
@@ -51,7 +51,7 @@ export default function TimetablePage() {
 
         // Step 2: Fetch timetable + schedule config
         const ttRes = await axios.get(
-          `http://localhost:3000/api/students/portal/timetable?instituteId=${parsed.institutionId}&classId=${classId}&sectionId=${sectionId}`
+          `${process.env.NEXT_PUBLIC_API_URL}api/students/portal/timetable?instituteId=${parsed.institutionId}&classId=${classId}&sectionId=${sectionId}`
         );
 
         const { timetable: backendTimetable, scheduleConfig } = ttRes.data;

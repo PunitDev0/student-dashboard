@@ -55,7 +55,7 @@ export default function AttendancePage() {
         const { institutionId, id: studentId } = JSON.parse(stored);
 
         const res = await axios.get(
-          `http://localhost:3000/api/students/portal/attendance?institutionId=${institutionId}&studentId=${studentId}`
+          `${process.env.NEXT_PUBLIC_API_URL}api/students/portal/attendance?institutionId=${institutionId}&studentId=${studentId}`
         );
 
         if (res.data.success) {
